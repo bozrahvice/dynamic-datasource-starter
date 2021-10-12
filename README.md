@@ -67,16 +67,16 @@ mybatis.mapper-locations=classpath:mybatis/**/*.xml
 #jdbc.dynamic.datasource.testshardingjdbc.password = *****
 #jdbc.dynamic.datasource.testshardingjdbc.type = com.alibaba.druid.pool.DruidDataSource
 #以下为单独数据源 连接池属性配置，若为配置则采用  jdbc.common.connectionPool 公共配置属性，其他数据源配置类似
-#jdbc.dynamic.connectionPool.mallChannel.maxWait = 10000
-#jdbc.dynamic.connectionPool.mallChannel.maxIdle = 10
-#jdbc.dynamic.connectionPool.mallChannel.minIdle = 5
-#jdbc.dynamic.connectionPool.mallChannel.initialSize = 5
-#jdbc.dynamic.connectionPool.mallChannel.maxActive = 10
-#jdbc.dynamic.connectionPool.mallChannel.validationQuery = select 1
-#jdbc.dynamic.connectionPool.mallChannel.filters = stat,wall,slf4j
-#jdbc.dynamic.connectionPool.mallChannel.connectionProperties = druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-#jdbc.dynamic.connectionPool.mallChannel.wall.multiStatementAllow = true
-#jdbc.dynamic.connectionPool.mallChannel.wall.noneBaseStatementAllow = true
+#jdbc.dynamic.connectionPool.testshardingjdbc.maxWait = 10000
+#jdbc.dynamic.connectionPool.testshardingjdbc.maxIdle = 10
+#jdbc.dynamic.connectionPool.testshardingjdbc.minIdle = 5
+#jdbc.dynamic.connectionPool.testshardingjdbc.initialSize = 5
+#jdbc.dynamic.connectionPool.testshardingjdbc.maxActive = 10
+#jdbc.dynamic.connectionPool.testshardingjdbc.validationQuery = select 1
+#jdbc.dynamic.connectionPool.testshardingjdbc.filters = stat,wall,slf4j
+#jdbc.dynamic.connectionPool.testshardingjdbc.connectionProperties = druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#jdbc.dynamic.connectionPool.testshardingjdbc.wall.multiStatementAllow = true
+#jdbc.dynamic.connectionPool.testshardingjdbc.wall.noneBaseStatementAllow = true
 
 #是否打印shardingJdbc sql日志
 jdbc.shardingsphere.props.sql.show=true
