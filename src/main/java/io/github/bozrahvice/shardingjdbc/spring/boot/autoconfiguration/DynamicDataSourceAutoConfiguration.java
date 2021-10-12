@@ -6,6 +6,7 @@ import io.github.bozrahvice.shardingjdbc.aop.DynamicDataSourceAnnotationIntercep
 import io.github.bozrahvice.shardingjdbc.commons.DbHealthIndicator;
 import io.github.bozrahvice.shardingjdbc.commons.HealthCheckAdapter;
 import io.github.bozrahvice.shardingjdbc.dynamicroute.DynamicRoutingDataSource;
+import io.github.bozrahvice.shardingjdbc.properties.CommonConnectionPoolProperties;
 import io.github.bozrahvice.shardingjdbc.properties.MybatisProperties;
 import io.github.bozrahvice.shardingjdbc.properties.DynamicDataSourceProperties;
 import io.github.bozrahvice.shardingjdbc.properties.shardingsphere.ShardingJdbcDataSourceProperties;
@@ -43,7 +44,7 @@ import java.util.HashMap;
  */
 @Slf4j
 @Configuration
-@EnableConfigurationProperties(value = {DynamicDataSourceProperties.class, ShardingJdbcDataSourceProperties.class, MybatisProperties.class})
+@EnableConfigurationProperties(value = {DynamicDataSourceProperties.class, ShardingJdbcDataSourceProperties.class, MybatisProperties.class, CommonConnectionPoolProperties.class})
 @Import(value = {DynamicDataSourceCreatorAutoConfiguration.class})
 public class DynamicDataSourceAutoConfiguration {
 
