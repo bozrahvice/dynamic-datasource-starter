@@ -23,7 +23,7 @@ dynamic-datasource-starter 基于springboot的快速集成多数据源的启动�
     <dependency>
         <groupId>io.github.bozrahvice.starter</groupId>
         <artifactId>dynamic-datasource-starter</artifactId>
-        <version>1.1.0</version>
+        <version>2.0.0</version>
     </dependency>
 ```
 
@@ -55,34 +55,35 @@ mybatis.enable=true
 mybatis.type-aliases-package=io.github.bozrahvice.example.shardingjdbc.sql.dto.*
 mybatis.mapper-locations=classpath:mybatis/**/*.xml
 
+
+#dataSourceNames,同时为@ds中value的值，以下配置数据源的同时认为以该值开头的为同一个组的数据源
+jdbc.shardingsphere.dataSourceNames=testshardingjdbc,testDB,masterSlaveDB
+
 #不进行分库的数据源（简单的数据源）配置示例
 #可以查看 com.panda.leaf.shardingjdbc.properties.DynamicDataSourceProperties java类中的datasource
 #jdbc.dynamic配置文件前缀
 #datasource为需要解析的map对象名
 #testshardingjdbc（可以自定义）为datasource map对象中的key，同时为@ds中的value值（即需要选择的数据源）
 # url、driver-class-name、username、password等 为 为datasource map对象中的 value
-#jdbc.dynamic.datasource.testshardingjdbc.url = jdbc:mysql://localhost:3306/testshardingjdbc?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
-#jdbc.dynamic.datasource.testshardingjdbc.driver-class-name = com.mysql.cj.jdbc.Driver
-#jdbc.dynamic.datasource.testshardingjdbc.username = *****
-#jdbc.dynamic.datasource.testshardingjdbc.password = *****
-#jdbc.dynamic.datasource.testshardingjdbc.type = com.alibaba.druid.pool.DruidDataSource
+#jdbc.shardingsphere.datasource.testshardingjdbc.url = jdbc:mysql://localhost:3306/testshardingjdbc?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+#jdbc.shardingsphere.datasource.testshardingjdbc.driver-class-name = com.mysql.cj.jdbc.Driver
+#jdbc.shardingsphere.datasource.testshardingjdbc.username = *****
+#jdbc.shardingsphere.datasource.testshardingjdbc.password = *****
+#jdbc.shardingsphere.datasource.testshardingjdbc.type = com.alibaba.druid.pool.DruidDataSource
 #以下为单独数据源 连接池属性配置，若为配置则采用  jdbc.common.connectionPool 公共配置属性，其他数据源配置类似
-#jdbc.dynamic.connectionPool.testshardingjdbc.maxWait = 10000
-#jdbc.dynamic.connectionPool.testshardingjdbc.maxIdle = 10
-#jdbc.dynamic.connectionPool.testshardingjdbc.minIdle = 5
-#jdbc.dynamic.connectionPool.testshardingjdbc.initialSize = 5
-#jdbc.dynamic.connectionPool.testshardingjdbc.maxActive = 10
-#jdbc.dynamic.connectionPool.testshardingjdbc.validationQuery = select 1
-#jdbc.dynamic.connectionPool.testshardingjdbc.filters = stat,wall,slf4j
-#jdbc.dynamic.connectionPool.testshardingjdbc.connectionProperties = druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-#jdbc.dynamic.connectionPool.testshardingjdbc.wall.multiStatementAllow = true
-#jdbc.dynamic.connectionPool.testshardingjdbc.wall.noneBaseStatementAllow = true
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.maxWait = 10000
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.maxIdle = 10
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.minIdle = 5
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.initialSize = 5
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.maxActive = 10
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.validationQuery = select 1
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.filters = stat,wall,slf4j
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.connectionProperties = druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.wall.multiStatementAllow = true
+#jdbc.shardingsphere.connectionPool.testshardingjdbc.wall.noneBaseStatementAllow = true
 
 #是否打印shardingJdbc sql日志
 jdbc.shardingsphere.props.sql.show=true
-
-#groupIds为List列表，改配置必须，作为shardingJdbc数据源的组ID,同时为@ds中value的值，以下配置数据源的同时认为以该值开头的为同一个组的数据源
-jdbc.shardingsphere.groupIds=testDB,masterSlaveDB
 
 #以下为分库数据源配置示例
 #jdbc.dynamic配置文件前缀
