@@ -1,4 +1,4 @@
-package io.github.bozrahvice.shardingjdbc.properties;
+package io.github.bozrahvice.shardingjdbc.properties.model;
 
 
 

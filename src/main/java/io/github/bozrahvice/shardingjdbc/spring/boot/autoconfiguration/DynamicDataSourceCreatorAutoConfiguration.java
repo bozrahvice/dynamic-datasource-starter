@@ -3,7 +3,6 @@ package io.github.bozrahvice.shardingjdbc.spring.boot.autoconfiguration;
 import io.github.bozrahvice.shardingjdbc.initdatasource.DataSourceCreator;
 import io.github.bozrahvice.shardingjdbc.initdatasource.DbcpDataSourceCreator;
 import io.github.bozrahvice.shardingjdbc.initdatasource.DruidDataSourceCreator;
-import io.github.bozrahvice.shardingjdbc.properties.DynamicDataSourceProperties;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -18,7 +17,6 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @AllArgsConstructor
-@EnableConfigurationProperties(DynamicDataSourceProperties.class)
 public class DynamicDataSourceCreatorAutoConfiguration {
 
     @Bean

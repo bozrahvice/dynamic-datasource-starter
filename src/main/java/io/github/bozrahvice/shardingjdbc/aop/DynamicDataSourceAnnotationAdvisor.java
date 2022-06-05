@@ -31,14 +31,18 @@ public class DynamicDataSourceAnnotationAdvisor extends AbstractPointcutAdvisor 
 
     private final Pointcut pointcut;
 
-    public DynamicDataSourceAnnotationAdvisor(@NonNull DynamicDataSourceAnnotationInterceptor dynamicDataSourceAnnotationInterceptor) {
+    private final Class<? extends Annotation> annotation;
+
+    public DynamicDataSourceAnnotationAdvisor(@NonNull DynamicDataSourceAnnotationInterceptor dynamicDataSourceAnnotationInterceptor,
+                                              @NonNull Class<? extends Annotation> annotation) {
         this.advice = dynamicDataSourceAnnotationInterceptor;
+        this.annotation = annotation;
         this.pointcut = buildPointcut();
     }
 
     private Pointcut buildPointcut() {
-        Pointcut cpc = new AnnotationMatchingPointcut(DS.class, true);
-        Pointcut mpc = new AnnotationMethodPoint(DS.class);
+        Pointcut cpc = new AnnotationMatchingPointcut(annotation, true);
+        Pointcut mpc = new AnnotationMethodPoint(annotation);
         return new ComposablePointcut(cpc).union(mpc);
     }
 

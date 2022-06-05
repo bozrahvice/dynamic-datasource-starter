@@ -1,7 +1,7 @@
 package io.github.bozrahvice.shardingjdbc.initdatasource;
 
-import io.github.bozrahvice.shardingjdbc.properties.ConnectionPoolProperty;
-import io.github.bozrahvice.shardingjdbc.properties.DataSourceProperty;
+import io.github.bozrahvice.shardingjdbc.properties.model.ConnectionPoolProperty;
+import io.github.bozrahvice.shardingjdbc.properties.model.DataSourceProperty;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.sql.DataSource;

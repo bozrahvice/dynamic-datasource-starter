@@ -1,7 +1,7 @@
-package io.github.bozrahvice.shardingjdbc.properties.shardingsphere;
+package io.github.bozrahvice.shardingjdbc.properties;
 
-import io.github.bozrahvice.shardingjdbc.properties.ConnectionPoolProperty;
-import io.github.bozrahvice.shardingjdbc.properties.DataSourceProperty;
+import io.github.bozrahvice.shardingjdbc.properties.model.ConnectionPoolProperty;
+import io.github.bozrahvice.shardingjdbc.properties.model.DataSourceProperty;
 import io.github.bozrahvice.shardingjdbc.properties.shardingsphere.masterslave.MasterSlaveRuleConfigurationProperties;
 import io.github.bozrahvice.shardingjdbc.properties.shardingsphere.sharding.ShardingRuleConfigurationProperties;
 import lombok.Getter;
@@ -16,22 +16,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import static io.github.bozrahvice.shardingjdbc.support.Constants.JDBC_DYNAMIC_PROPERTIES_CLASSPATH_FULL_FILE_NAME;
+import static io.github.bozrahvice.shardingjdbc.support.Constants.SHARDING_JDBC_DATA_SOURCE_PROPERTIES_PREFIX_NAME;
+
 /**
  * @author ylpanda
  * @since 1.0.0
  */
 @Component
-@ConfigurationProperties(prefix = ShardingJdbcDataSourceProperties.PREFIX_NAME)
-@PropertySource({ShardingJdbcDataSourceProperties.CLASS_PATH})
+@ConfigurationProperties(prefix = SHARDING_JDBC_DATA_SOURCE_PROPERTIES_PREFIX_NAME)
+@PropertySource({JDBC_DYNAMIC_PROPERTIES_CLASSPATH_FULL_FILE_NAME})
 @Getter
 @Setter
 public class ShardingJdbcDataSourceProperties {
-    public static final String PREFIX_NAME = "jdbc.shardingsphere";
-
-    public static final String CLASS_PATH = "classpath:jdbcdynamic.properties";
-
-    public static final String FILE_NAME = "jdbcdynamic.properties";
-
 
     private Properties props = new Properties();
 
@@ -59,6 +56,6 @@ public class ShardingJdbcDataSourceProperties {
     /**
      * 数据源组列表
      */
-    List<String> groupIds = new ArrayList<>();
+    List<String> dataSourceNames = new ArrayList<>();
 
 }

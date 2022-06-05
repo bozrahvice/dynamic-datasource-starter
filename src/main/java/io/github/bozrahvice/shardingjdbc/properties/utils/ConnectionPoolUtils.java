@@ -1,9 +1,10 @@
-package io.github.bozrahvice.shardingjdbc.properties;
+package io.github.bozrahvice.shardingjdbc.properties.utils;
 
 
 
 import io.github.bozrahvice.shardingjdbc.commons.druid.DruidSlf4jConfig;
 import io.github.bozrahvice.shardingjdbc.commons.druid.DruidWallConfig;
+import io.github.bozrahvice.shardingjdbc.properties.model.ConnectionPoolProperty;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Collection;

@@ -1,6 +1,7 @@
 package io.github.bozrahvice.shardingjdbc.spring.boot.autoconfiguration;
 
 import com.alibaba.druid.support.http.StatViewServlet;
+import io.github.bozrahvice.shardingjdbc.annotation.DS;
 import io.github.bozrahvice.shardingjdbc.aop.DynamicDataSourceAnnotationAdvisor;
 import io.github.bozrahvice.shardingjdbc.aop.DynamicDataSourceAnnotationInterceptor;
 import io.github.bozrahvice.shardingjdbc.commons.DbHealthIndicator;
@@ -8,8 +9,7 @@ import io.github.bozrahvice.shardingjdbc.commons.HealthCheckAdapter;
 import io.github.bozrahvice.shardingjdbc.dynamicroute.DynamicRoutingDataSource;
 import io.github.bozrahvice.shardingjdbc.properties.CommonConnectionPoolProperties;
 import io.github.bozrahvice.shardingjdbc.properties.MybatisProperties;
-import io.github.bozrahvice.shardingjdbc.properties.DynamicDataSourceProperties;
-import io.github.bozrahvice.shardingjdbc.properties.shardingsphere.ShardingJdbcDataSourceProperties;
+import io.github.bozrahvice.shardingjdbc.properties.ShardingJdbcDataSourceProperties;
 import io.github.bozrahvice.shardingjdbc.provider.DynamicDataSourceProvider;
 import io.github.bozrahvice.shardingjdbc.provider.DynamicDataSourceServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -44,8 +44,8 @@ import java.util.HashMap;
  */
 @Slf4j
 @Configuration
-@EnableConfigurationProperties(value = {DynamicDataSourceProperties.class, ShardingJdbcDataSourceProperties.class, MybatisProperties.class, CommonConnectionPoolProperties.class})
-@Import(value = {DynamicDataSourceCreatorAutoConfiguration.class})
+@EnableConfigurationProperties(value = {ShardingJdbcDataSourceProperties.class, MybatisProperties.class, CommonConnectionPoolProperties.class})
+@Import(value = {DynamicDataSourceCreatorAutoConfiguration.class,DynamicDataSourceHealthCheckAutoConfiguration.class})
 public class DynamicDataSourceAutoConfiguration {
 
 
@@ -70,7 +70,7 @@ public class DynamicDataSourceAutoConfiguration {
     @Bean
     public Advisor dynamicDatasourceAnnotationAdvisor() {
         DynamicDataSourceAnnotationInterceptor interceptor = new DynamicDataSourceAnnotationInterceptor(true);
-        DynamicDataSourceAnnotationAdvisor advisor = new DynamicDataSourceAnnotationAdvisor(interceptor);
+        DynamicDataSourceAnnotationAdvisor advisor = new DynamicDataSourceAnnotationAdvisor(interceptor, DS.class);
         advisor.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return advisor;
     }
@@ -113,17 +113,5 @@ public class DynamicDataSourceAutoConfiguration {
         initParameters.put("allow", "");
         bean.setInitParameters(initParameters);
         return bean;
-    }
-
-    @Bean
-    public HealthCheckAdapter healthCheckAdapter() {
-        return new HealthCheckAdapter();
-    }
-
-
-    @ConditionalOnClass(AbstractHealthIndicator.class)
-    @Bean("dynamicDataSourceHealthCheck")
-    public DbHealthIndicator healthIndicator(DataSource dataSource, HealthCheckAdapter healthCheckAdapter) {
-        return new DbHealthIndicator(dataSource, "SELECT 1", healthCheckAdapter);
     }
 }

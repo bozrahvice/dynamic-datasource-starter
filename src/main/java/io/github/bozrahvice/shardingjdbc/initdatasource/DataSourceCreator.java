@@ -1,8 +1,8 @@
 package io.github.bozrahvice.shardingjdbc.initdatasource;
 
 import io.github.bozrahvice.shardingjdbc.commons.ErrorCreateDataSourceException;
-import io.github.bozrahvice.shardingjdbc.properties.ConnectionPoolProperty;
-import io.github.bozrahvice.shardingjdbc.properties.DataSourceProperty;
+import io.github.bozrahvice.shardingjdbc.properties.model.ConnectionPoolProperty;
+import io.github.bozrahvice.shardingjdbc.properties.model.DataSourceProperty;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 

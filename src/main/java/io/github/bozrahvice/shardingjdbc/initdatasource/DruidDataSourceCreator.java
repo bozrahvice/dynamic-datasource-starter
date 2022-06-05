@@ -8,8 +8,8 @@ import com.alibaba.druid.wall.WallConfig;
 import com.alibaba.druid.wall.WallFilter;
 import io.github.bozrahvice.shardingjdbc.commons.druid.DruidSlf4jConfig;
 import io.github.bozrahvice.shardingjdbc.commons.druid.DruidWallConfigUtil;
-import io.github.bozrahvice.shardingjdbc.properties.ConnectionPoolProperty;
-import io.github.bozrahvice.shardingjdbc.properties.DataSourceProperty;
+import io.github.bozrahvice.shardingjdbc.properties.model.ConnectionPoolProperty;
+import io.github.bozrahvice.shardingjdbc.properties.model.DataSourceProperty;
 import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;

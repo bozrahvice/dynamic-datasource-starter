@@ -13,22 +13,19 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import static io.github.bozrahvice.shardingjdbc.support.Constants.JDBC_DYNAMIC_PROPERTIES_CLASSPATH_FULL_FILE_NAME;
+import static io.github.bozrahvice.shardingjdbc.support.Constants.MYBATIS_PROPERTIES_PREFIX_NAME;
+
 /**
  * @author ylpanda
  * @since 1.0.0
  */
 @Component
-@ConfigurationProperties(prefix = MybatisProperties.PREFIX_NAME)
-@PropertySource({MybatisProperties.CLASS_PATH})
+@ConfigurationProperties(prefix = MYBATIS_PROPERTIES_PREFIX_NAME)
+@PropertySource({JDBC_DYNAMIC_PROPERTIES_CLASSPATH_FULL_FILE_NAME})
 @Getter
 @Setter
 public class MybatisProperties {
-
-    public static final String PREFIX_NAME = "mybatis";
-
-    public static final String CLASS_PATH = "classpath:jdbcdynamic.properties";
-
-    public static final String FILE_NAME = "jdbcdynamic.properties";
 
     private static final ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
 
